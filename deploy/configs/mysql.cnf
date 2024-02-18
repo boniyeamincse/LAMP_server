@@ -1,0 +1,49 @@
+# MySQL server configuration file
+
+[mysqld]
+# Port number for listening
+port = 3306
+
+# Socket file for local connections
+socket = /var/run/mysqld/mysqld.sock
+
+# Data directory
+datadir = /var/lib/mysql
+
+# Character set and collation
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+# Allow remote connections (not recommended for production)
+#bind-address = 0.0.0.0
+
+# Max allowed connections
+max_connections = 100
+
+# Max allowed packet size
+max_allowed_packet = 16M
+
+# Log slow queries
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/slow-query.log
+long_query_time = 2
+
+# Security settings (adjust based on your needs)
+# validate_password = 2 (enforces stronger password policies)
+# log_warnings = 2 (logs warnings to error log)
+
+# Don't skip name resolution
+skip-name-resolve = 0
+
+# Enable InnoDB storage engine
+default_storage_engine = innodb
+
+# InnoDB buffer pool size
+innodb_buffer_pool_size = 128M
+
+# Character set for client connections
+character_set_client = utf8mb4
+
+# Enable general log
+# general_log = 1
+# general_log_file = /var/log/mysql/general.log

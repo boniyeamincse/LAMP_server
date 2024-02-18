@@ -1,0 +1,22 @@
+set daemon /var/lib/monit/monit.pid
+
+set logfile /var/log/monit/monit.log
+
+set httpd port 2812
+  use address localhost  # only allow connections from localhost
+  # uncomment the following line to set username and password
+  # auth admin:your_password
+
+check process apache with pidfile /var/run/apache2/apache2.pid
+  start program = "/etc/init.d/apache2 start"
+  stop program = "/etc/init.d/apache2 stop"
+  if failed port 80 for 5 cycles then restart
+
+check process mysql with pidfile /var/run/mysqld/mysqld.pid
+  start program = "/etc/init.d/mysql start"
+  stop program = "/etc/init.d/mysql stop"
+  if failed port 3306 for 5 cycles then restart
+
+# Add additional checks for other services (e.g., PHP-FPM)
+
+use localhost:2812 # specify the web interface address

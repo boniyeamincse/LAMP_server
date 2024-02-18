@@ -1,0 +1,14 @@
+[Unit]
+Description=The PHP FastCGI Process Manager
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+ExecStart=/usr/sbin/php-fpm7.4 -F
+ExecReload=/usr/sbin/php-fpm7.4 -F
+ExecStop=/usr/sbin/php-fpm7.4 -F
+
+[Install]
+WantedBy=multi-user.target
